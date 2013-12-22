@@ -3,7 +3,7 @@
 Plugin Name: WordPress Recent Posts Excerpt Widget
 Description: Adds a recent posts widget with excerpts.
 Author: Alexander O'Mara
-Version: 1.5
+Version: 1.6
 */
 
 //Extend the widget class and register the widget.
@@ -43,12 +43,9 @@ class RecentPostsExcepts_Widget extends WP_Widget {
 				$author = get_userdata( $p['post_author'] );
 				$postdate = explode( ' ', $p['post_date'] );
 				$excerpt = explode( ' ', trim( $p['post_excerpt'] !== '' ? $p['post_excerpt'] : strip_tags( array_pop( array_reverse( explode( '<!--more-->', $p['post_content'] ) ) ) ) ) );
-				?><div><?php
-					?><h4><?php echo $p['post_title']; ?></h4><?php
-					?><h6><?php echo $author->display_name . ', ' . str_replace( '-', '/', $postdate[0] ); ?></h6><?php
-				?></div><?php
+				?><h4><?php echo $p['post_title']; ?></h4><?php
+				?><h6><?php echo $author->display_name . ', ' . str_replace( '-', '/', $postdate[0] ); ?></h6><?php
 				?><p><?php echo implode( ' ', array_slice( $excerpt, 0, $numberwords ) ) . ( count( $excerpt ) > $numberwords ? '. . .' : '' ); ?></p><?php
-				?><p>&nbsp;</p><?php
 			?></a></li><?php
 		}
 		unset( $p );
