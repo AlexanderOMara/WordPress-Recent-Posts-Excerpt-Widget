@@ -8,3 +8,10 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# Eclipse project files #
+#########################
+/.project
+/.settings
+/.buildpath
+/.externalToolBuilders
